@@ -102,22 +102,22 @@ function Auth() {
 
             {mode === 'register' && (
               <>
-                <input type="text" name='txt_name' placeholder="نام کامل" value={formData.name}
+                <input type="text"  placeholder="نام کامل" value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
-                <input type="text" name='txt_phone' placeholder="شماره تماس" value={formData.phone}
+                <input type="text"  placeholder="شماره تماس" value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })} />
-                <input type="text" name='txt_address' placeholder="آدرس" value={formData.address}
+                <input type="text"  placeholder="آدرس" value={formData.address}
                   onChange={(e) => setFormData({ ...formData, address: e.target.value })} />
               </>
             )}
-            <input type="email" name='txt_email' placeholder="ایمیل" value={formData.email}
+            <input type="email"  placeholder="ایمیل" value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
 
-            <input type="password" name='txt_password' placeholder="رمز عبور" value={formData.password}
+            <input type="password"  placeholder="رمز عبور" value={formData.password}
               onChange={(e) => setFormData({ ...formData, password: e.target.value })} />
 
             {mode === 'register' && (
-              <input type="password" name='txt_repassword' placeholder="تایید رمز عبور" value={formData.confirmPassword}
+              <input type="password" placeholder="تایید رمز عبور" value={formData.confirmPassword}
                 onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })} />
             )}
 
