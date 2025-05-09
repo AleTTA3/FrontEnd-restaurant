@@ -8,7 +8,7 @@ function Cart({ cart, updateQuantity, removeFromCart, clearCart }) {
         <div className="cart-container">
             <h2>سبد خرید</h2>
             {cart.length === 0 ? (
-                <p>سبد خرید شما خالی است.</p>
+                <p>سبد خرید شما خالی است</p>
             ) : (
                 <ul className="cart-list">
                     {cart.map((item) => (
