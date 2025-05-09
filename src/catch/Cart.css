@@ -1,0 +1,89 @@
+.cart-container{
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+.cart-list{
+    list-style: none;
+    padding: 0;
+
+}
+.cart-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+
+}
+.remove-button{
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+.remove-button:hover{
+    background-color: darkred;
+}
+.total-price{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.order-button{
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.order-button:hover{
+    background-color: #218838;
+}
+.back-button {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #444;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    margin-top: 15px;
+    display: block;
+    text-align: center;
+    width: 150px;
+    margin: 15px auto;
+}
+.back-button:hover{
+    background-color: #222;
+    transform: scale(1.05);
+}
+.order-button{
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.order-button:hover{
+    background: #0056b3;
+    transform: scale(1.05);
+}
+.order-button:active{
+    transform: scale(0.95);
+}

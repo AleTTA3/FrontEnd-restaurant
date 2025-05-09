@@ -1,0 +1,529 @@
+:root {
+  --primary-color: linear-gradient(45deg, #ff6f61, #ffbc42); /* نارنجی جذاب */
+  --secondary-color: #2a9d8f; /* فیروزه‌ای */
+  --danger-color: #e63946; /* قرمز */
+  --text-dark: #333;
+  --text-light: #666;
+  --bg-light: #f8f8f8;
+  --border-radius: 10px;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease-in-out;
+}
+body{
+  font-family: 'IRANYekan';
+  src: url('assets/fonts/IRANYekan.woff2') format('woff2'),
+       url('assets/fonts/IRANYekan.woff2') format('woff');
+
+}
+@font-face {
+  font-family: 'IRANYekan';
+  src: url('assets/fonts/IRANYekan.woff2') format('woff2'),
+       url('assets/fonts/IRANYekan.woff2') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'IRANYekan', sans-serif; /* از فونت ایرانی یکن استفاده می‌کنیم */
+}
+
+.search-box, .search-box input, .search-box .search-btn {
+  font-family: 'IRANYekan', sans-serif;
+}
+
+.menu-container {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sidebar {
+  width: 180px;
+  background: #f8f8f8;
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  position: fixed;
+  right: 10px;
+  top: 80px;
+}
+
+.sidebar h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.sidebar ul li:hover {
+  background: #eaeaea;
+}
+
+.sidebar ul .active {
+  background: linear-gradient(45deg, #ff6f61, #ffbc42); 
+  color: white;
+  font-weight: bold;
+}
+.sidebar ul li.active{
+  background: var(--primary-color);
+}
+
+.menu-content {
+  flex-grow: 1;
+  padding: 20px;
+  margin-right: 200px;
+}
+
+.menu-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-item {
+  background: white;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  border-radius: var(--border-radius);
+box-shadow: var(--box-shadow);
+transition: var(--transition);
+}
+.menu-item:hover {
+  transform: translateY(-5px);
+}
+ .order-button, .back-button {
+
+  transition: var(--transition);
+}
+.add-button {
+font-family: 'IRANYekan';
+src: url('assets/fonts/IRANYekan.woff2') format('woff2'),
+     url('assets/fonts/IRANYekan.woff2') format('woff');
+  transition: var(--transition);
+  color: white;
+  border: 1px solid --primary-color;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: linear-gradient(45deg, #ff6f61, #ffbc42); 
+  color: white;
+  transform: scale(1.1);
+}
+
+.add-button:active {
+  transform: scale(0.95);
+}
+
+.search-sort-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 15px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 5px 10px;
+  border-radius: 8px;
+  width: 40%;
+  height: 25px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ddd;
+  text-align: right;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 5px;
+}
+
+.sort-box select {
+
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+.filter-icon {
+  font-size: 1.5rem;
+  color: #ff5722;
+}
+
+.sort-dropdown {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  cursor: pointer;
+}
+/* گرید 3 ستونه */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 ستون مساوی */
+  gap: 20px; /* فاصله بین کارت‌ها */
+  padding: 0;
+  list-style: none;
+}
+
+/* استایل کارت‌ها */
+.menu-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* ارتفاع یکسان */
+}
+
+/* استایل عکس */
+.food-image {
+  width: 100%;
+  height: 180px; /* ارتفاع ثابت برای عکس‌ها */
+  object-fit: cover; /* جلوگیری از کشیدگی عکس */
+}
+
+/* بخش توضیحات */
+.food-description {
+  padding: 15px;
+  flex-grow: 1; /* فضای باقیمانده را پر کند */
+}
+
+.food-description h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.food-description p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* بخش قیمت و دکمه */
+.food-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #f8f8f8;
+  border-top: 1px solid #eee;
+}
+
+.food-price {
+  font-weight: bold;
+  color: #e63946;
+  font-size: 16px;
+}
+
+.add-button {
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.add-button:hover {
+  background: linear-gradient(45deg, #ff6f61, #ffbc42); 
+}
+@media (max-width: 1200px) {
+  .menu-grid {
+    grid-template-columns: repeat(3, 1fr); /* 2 ستون در تبلت */
+  }
+}
+@media (max-width: 900px) {
+  .menu-grid {
+    grid-template-columns: repeat(1, 1fr); /* 2 ستون در تبلت */
+  }
+}
+@media (max-width: 600px) {
+  .menu-grid {
+    grid-template-columns: 1fr; /* 1 ستون در موبایل */
+  }
+}
+/* تنظیمات دقیق فاصله‌ها */
+.food-description {
+  padding: 12px 15px; /* کاهش/افزایش حاشیه داخلی */
+}
+.food-footer {
+  padding: 10px 15px; /* فشرده‌تر کردن بخش قیمت و دکمه */
+  gap: 10px; /* فاصله بین قیمت و دکمه */
+}
+/* اضافه کردن به .menu-card */
+.menu-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.menu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* انیمیشن دکمه افزودن */
+.add-button {
+  color : #ff7f50;
+  border: 2px solid #ff7f50;
+  position: relative;
+  overflow: hidden;
+}
+.add-button:after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(45deg);
+  transition: all 0.3s;
+}
+.add-button:hover:after {
+  left: 100%;
+}
+.link-decoration{
+  text-decoration: none;
+}
+@media (max-width: 900px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 ستون در تبلت */
+  }
+  .food-image {
+    height: 150px; /* کاهش ارتفاع عکس */
+  }
+}
+@media (max-width: 480px) {
+  .menu-grid {
+    grid-template-columns: 1fr; /* 1 ستون در موبایل */
+  }
+  .sidebar {
+    display: none; /* مخفی کردن سایدبار در موبایل */
+  }
+  .menu-content {
+    margin-right: 0;
+  }
+}
+.food-image {
+  transition: transform 0.5s;
+}
+.menu-card:hover .food-image {
+  transform: scale(1.05);
+}
+.popular-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: linear-gradient(45deg, #ff6f61, #ffbc42); 
+  color: white;
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+/* استایل دکمه‌های کم/زیاد کردن */
+.quantity-controll {
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+
+}
+/* استایل‌های پایه برای دکمه‌ها */
+.quantity-controll {
+display: flex;
+align-items: center;
+gap: 8px;
+background-color: #f5f5f5;
+border-radius: 20px;
+padding: 5px;
+}
+
+.quantity-controll button {
+border:1px solid #ff5722;
+transition: all 0.3s ease;
+color: #ff7f50;
+width: 28px;
+height: 28px;
+border-radius: 50%;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: all 0.3s ease;
+}
+
+.quantity-controll button:hover {
+background: linear-gradient(45deg, #ff6f61, #ffbc42); 
+transform: scale(1.1);
+color: white;
+}
+.quantity-controll button:active {
+  transform: scale(0.95);
+}
+
+.quantity-controll span {
+font-weight: bold;
+min-width: 20px;
+ text-align: center;
+}
+
+/* test*/
+.search-box {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(45deg, #ff6f61, #ffbc42); /* گرادیان ملایم */
+  padding: 5px 15px;
+  border-radius: 50px; /* گوشه‌های گرد برای زیبایی بیشتر */
+  width: 30px; /* عرض کم برای شروع */
+  height: 40px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* سایه ملایم */
+  border: none;
+  transition: width 0.3s ease, background 0.3s ease; /* ترنزیشن برای عرض و پس‌زمینه */
+  overflow: hidden; /* جلوگیری از نمایش بیش از حد */
+  position: relative;
+}
+
+.search-box:hover {
+  width: 250px; /* افزایش عرض در هاور */
+  background: linear-gradient(45deg, #ffbc42, #ff6f61); /* تغییر جهت گرادیان */
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 5px;
+  width: 100%; /* پر کردن فضای ورودی */
+  color: #fff;
+  background: transparent;
+  transition: width 0.3s ease, padding 0.3s ease; /* ترنزیشن برای ورودی */
+}
+
+.search-box .search-btn {
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* ترنزیشن برای تغییر رنگ و چرخش */
+  position: absolute;
+  right: 10px;
+  z-index: 1;
+}
+
+.search-btn:hover {
+  background: rgba(255, 255, 255, 0.2); /* پس‌زمینه نورانی در هاور */
+  transform: scale(1.2); /* بزرگ‌تر شدن آیکون در هاور */
+}
+
+.search-btn svg {
+  transition: none; /* غیرفعال کردن ترنزیشن چرخش */
+  transform: rotate(0deg); /* ریست کردن چرخش */
+}
+
+.search-box .search-txt {
+  border: none;
+  background: none;
+  outline: none;
+  color: white;
+  font-size: 16px;
+  width: 0; /* پیش‌فرض بسته بودن */
+  transition: width 0.3s ease, padding 0.3s ease; /* ترنزیشن برای عرض و padding */
+}
+
+.search-box:hover .search-txt {
+  width: 180px; /* افزایش عرض ورودی در هاور */
+  padding: 0 10px; /* اضافه کردن padding */
+}
+
+@media (max-width: 768px) {
+  .search-box {
+    width: 60%;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-box {
+    width: 80%;
+  }
+}
+
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-button {
+  background-color: #10b981;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: inherit;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  min-width: 150px;
+}
+
+.dropdown-menu div {
+  padding: 10px 16px;
+  cursor: pointer;
+  text-align: right;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-menu div:hover {
+  background-color: #f0f0f0;
+}

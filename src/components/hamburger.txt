@@ -1,0 +1,52 @@
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+        cursor: pointer;
+        font-size: 28px;
+        padding: 10px 20px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* افکت چرخش برای منوی همبرگری هنگام باز شدن */
+    .hamburger.open {
+        transform: rotate(90deg);
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: rgba(255, 87, 34, 0.95); /* رنگ کمی شفاف‌تر */
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* افکت ظاهر شدن منو */
+    .nav-links.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+    }
+
+    .nav-links li {
+        padding: 15px 0;
+    }
+
+    .nav-links a {
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        transition: color 0.3s ease-in-out;
+    }
+
+    .nav-links a:hover {
+        color: #ffd54f;
+    }
+}

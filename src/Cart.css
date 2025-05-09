@@ -1,0 +1,118 @@
+.cart-container{
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    background: white;
+    box-shadow: var(--box-shadow);
+}
+.cart-list{
+    list-style: none;
+    padding: 0;
+
+}
+.block{
+    display: inline;
+    padding: 1rem;
+}
+.clear-cart{
+    display: inline;
+    font-family: 'IRANYekan';
+  src: url('assets/fonts/IRANYekan.woff2') format('woff2'),
+       url('assets/fonts/IRANYekan.woff2') format('woff');
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    border: 2px solid #e40505;
+    color: #e40505;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    
+}
+.clear-cart:hover {
+    color: white;
+    background-color: #e40505;; 
+    transform: scale(1.05);
+  }
+  .clear-cart:hover:after {
+    left: 100%;
+  }
+.cart-item{
+    background: var(--bg-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    border-bottom: 1px solid #ddd;
+
+}
+.remove-button{
+    background: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+.remove-button:hover{
+    background-color: darkred;
+}
+.total-price{
+    color: var(--primary-color);
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.order-button{
+    
+    font-family: 'IRANYekan';
+  src: url('assets/fonts/IRANYekan.woff2') format('woff2'),
+       url('assets/fonts/IRANYekan.woff2') format('woff');
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    border: 2px solid #1fe405;
+    color: #1fe405;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+.order-button:hover{
+    color: white;
+    background-color: #1fe405; 
+    transform: scale(1.05);
+}
+.order-button:hover:after {
+    left: 100%;
+  }
+.back-button {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #444;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    margin-top: 15px;
+    display: block;
+    text-align: center;
+    width: 150px;
+    margin: 15px auto;
+}
+.back-button:hover{
+    background-color: #222;
+    transform: scale(1.05);
+}
+

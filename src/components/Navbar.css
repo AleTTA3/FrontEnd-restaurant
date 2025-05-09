@@ -1,0 +1,137 @@
+.navbar {
+    background: linear-gradient(45deg, #ff6f61, #ffbc42); 
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px auto 20px 5px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 60px; /* ارتفاع ثابت */
+    z-index: 1000;
+}
+.hamburger{
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+}
+.logo{
+    font-size: 1.5rem;
+    font-weight: bold;
+    
+}
+.nav-links{
+    padding: 0 20px 0 20px;
+    list-style: none;
+    display: flex;
+    gap: 10px; /* افزایش فاصله بین آیتم‌ها */
+    flex-wrap: wrap; /* اگر فضا کم بود، به خط بعد بره */
+
+}
+.nav-links li {
+    display: inline;
+    flex-direction: column; /* متن بره زیر آیکون */
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    padding: 8px;
+    border-radius: 8px;
+
+}
+.nav-links a {
+    
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    transition: 0.3s;
+
+}
+.nav-links a:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+.app-container {
+    display: flex;
+    flex-direction: column;
+   
+}
+.page-content {
+    flex-grow: 1;
+    margin-top: 100px; /* مقدار این عدد باید برابر با ارتفاع navbar باشه */
+}
+.nav-icon{
+    font-size: 1.5rem;
+    margin-bottom: 3px;
+}
+.navbar {
+    background: linear-gradient(200deg, #ff6f61, #ffbc42); 
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 5px;
+    flex-wrap: nowrap;
+}
+
+.nav-links li {
+    display: flex;
+    margin: 0;
+    flex-direction: column; /* متن بره زیر آیکون */
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-links a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 0.9rem; /* متن کوچک و مینیمال */
+    transition: 0.3s;
+    padding: 4px 6px;
+    border-radius: 8px;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.nav-icon {
+    font-size: 1.5rem; /* سایز آیکون */
+    margin-bottom: 3px;
+    
+}
+.nav-font{
+
+    text-align: center;
+    user-select: none;
+    box-sizing: border-box;
+    display: block;
+    font-size: 9px;
+    font-style: normal;
+    letter-spacing: -0.1px;
+    text-align: center;
+    border-radius: 10px;
+    
+}
+
+
+

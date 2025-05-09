@@ -1,0 +1,73 @@
+.menu-container{
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;         
+}   
+.menu-title{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+
+}
+.menu-list{
+    list-style: none;
+    padding: 0;
+
+}   
+.menu-item{
+    display: flex;
+justify-content: space-between; 
+align-items: center;
+padding: 10px;
+border-bottom: 1px solid #ddd;
+}
+.add-button{
+    background-color: #ff5733;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+.add-button:hover{
+    background-color: #e04e2a;
+}
+.cart-link{
+    display: inline-block;
+    text-decoration: none;
+    background-color: #ff6600;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 15px;
+    display: block;
+    text-align: center;
+    max-width: 200px;
+    margin: 10px auto;
+}
+.cart-link:hover{
+    background-color: #cc5500;
+    transform: scale(1.05);
+}
+.add-button{
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.add-button:hover{
+    background: #218838;
+    transform: scale(1.1);
+}
+.add-button:active{
+    transform: scale(0.95);
+}
+
