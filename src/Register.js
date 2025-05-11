@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Auth.css';
-import handleCheck from './Handlecheck';
+
+
 function Auth() {
   const [mode, setMode] = useState('register'); // 'login' یا 'register'
   const [formData, setFormData] = useState({
@@ -19,8 +20,7 @@ function Auth() {
     const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return regex.test(email);
   };
-  
-  const handleSubmit = (e) => {
+  const handleCheck = (e) => {
     e.preventDefault();
       const tb_name = document.getElementById("txt_name");
       const tb_phone = document.getElementById("txt_phone");
@@ -120,6 +120,109 @@ function Auth() {
     }
 
     setError(''); // Reset error message
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+      const tb_name = document.getElementById("txt_name");
+      const tb_phone = document.getElementById("txt_phone");
+      const tb_address = document.getElementById("txt_address");
+      const tb_email = document.getElementById("txt_email");
+      const tb_password = document.getElementById("txt_password");
+      const tb_repassword = document.getElementById("txt_repassword");
+    // اعتبارسنجی فیلدهای ضروری
+    if ( (mode === 'register' && (!formData.name || !formData.phone || !formData.address || !formData.password || !formData.email || !formData.confirmPassword))) {
+      
+      if ( (mode === 'register' && (!formData.name && !formData.phone && !formData.address && !formData.password && !formData.email && !formData.confirmPassword))) {
+        setError('لطفاً همه فیلدهای ضروری را پر کنید');
+        tb_name.style.border="2px solid red";
+        tb_phone.style.border="2px solid red";
+        tb_address.style.border="2px solid red";
+        tb_email.style.border="2px solid red";
+        tb_password.style.border="2px solid red";
+        tb_repassword.style.border="2px solid red";
+        
+      }
+      if (!formData.name){
+        tb_name.style.border="2px solid red";
+        
+        
+      }
+      else if (formData.name){
+        tb_name.style.border="2px solid green";
+        
+      }
+      if (!formData.phone){
+        tb_name.style.border="2px solid red";
+        
+        
+      }
+      else if (formData.phone){
+        tb_phone.style.border="2px solid green";
+        
+      }
+      if (!formData.address){
+        tb_address.style.border="2px solid red";
+        
+      }
+      else if (formData.address){
+        tb_address.style.border="2px solid green";
+        
+      }
+      if (!formData.email){
+        tb_email.style.border="2px solid red";
+        
+      }
+      else if (formData.email){
+        tb_email.style.border="2px solid green";
+        
+      }
+      if (!formData.password){
+        tb_password.style.border="2px solid red";
+        
+      }
+      else if (formData.password){
+        tb_password.style.border="2px solid green";
+        
+      }
+      if (!formData.confirmPassword){
+        tb_repassword.style.border="2px solid red";
+        
+      }
+      else if (formData.confirmPassword){
+        tb_repassword.style.border="2px solid green";
+        
+      }
+      
+      
+    }
+
+    //شماره تلفن 
+    if (!/^09\d{9}$/.test(formData.phone)) {
+        
+        tb_phone.style.border="2px solid red";
+        setError('❌ شماره تماس معتبر نیست. باید با 09 شروع شود و 11 رقم باشد.');
+        return;
+      }
+    if (/^09\d{9}$/.test(formData.phone)) {
+      
+      tb_phone.style.border="2px solid green";
+      return;
+      
+    }
+    // بررسی فرمت ایمیل
+    if (!validateEmail(formData.email)) {
+      tb_email.style.border="2px solid red";
+      setError('ایمیل وارد شده معتبر نیست.');
+      return;
+    }
+
+    // بررسی یکسان بودن رمز عبور در حالت ثبت‌نام
+    if (mode === 'register' && formData.password !== formData.confirmPassword) {
+      setError('پسورد و تکرار پسورد با هم یکی نیستند');
+      return;
+    }
+
+    setError(''); // Reset error message
 
     const url = mode === 'register'
       ? 'http://localhost/restaurant/register.php'
@@ -166,7 +269,7 @@ function Auth() {
         <button className={mode === 'register' ? 'active' : ''} onClick={() => setMode('register')}>ثبت‌نام</button>
       </div>
 
-      <form onSubmit={handleSubmit} onChange={handleCheck} className="auth-form animated-form">
+      <form onSubmit={handleSubmit} onInput={handleCheck} className="auth-form animated-form">
         <h2 className="auth-title">{mode === 'register' ? 'فرم ثبت‌نام' : 'ورود به حساب'}</h2>
 
         {error && <p style={{ color: 'red' }}>{error}</p>}
