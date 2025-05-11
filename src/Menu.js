@@ -116,15 +116,12 @@ function Menu({ addToCart, cart, updateMenuItemQuantity, removeFromCart }) {
           </div>
         )}
       </div>
-      
-      
-      
-      <div class="search-box">
-                        <input type="text" placeholder="به چی میل داری؟" class="search-txt" onChange={(e) => handleSearch(e.target.value)} /> 
-                        <a href="#" class="search-btn"><FontAwesomeIcon icon={faSearch} className="search-icon" /> </a> 
-                    </div>
+        <div class="search-box">
+            <input type="text" placeholder="به چی میل داری؟" class="search-txt" onChange={(e) => handleSearch(e.target.value)} /> 
+                <a href="#" class="search-btn"><FontAwesomeIcon icon={faSearch} className="search-icon" /> </a> 
+        </div>
 
-      
+    
     </div>
 
               <motion.ul className="menu-grid"> 

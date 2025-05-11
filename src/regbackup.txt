@@ -129,13 +129,6 @@ function Auth() {
         <h2 className="auth-title">{mode === 'register' ? 'ثبت‌نام' : 'ورود به حساب'}</h2>
 
         {formMessage && <div className={`form-message ${formMessage.includes('موفق') ? 'success' : 'error'}`}>{formMessage}</div>}
-        
-{errors.name && <div className="error-message">{errors.name}</div>} 
-        {errors.phone && <div className="error-message">{errors.phone}</div>} 
-        {errors.address && <div className="error-message">{errors.address}</div>} 
-        {errors.email && <div className="error-message">{errors.email}</div>} 
-        {errors.password && <div className="error-message">{errors.password}</div>} 
-        {errors.confirmPassword && <div className="error-message">{errors.confirmPassword}</div>} 
 
         {mode === 'register' && (
           <>
@@ -181,3 +174,11 @@ function Auth() {
 export default Auth;
 
 
+
+
+{errors.name && <div className="error-message">{errors.name}</div>} {/* نمایش خطا */}
+        {errors.phone && <div className="error-message">{errors.phone}</div>} {/* نمایش خطا */}
+        {errors.address && <div className="error-message">{errors.address}</div>} {/* نمایش خطا */}
+        {errors.email && <div className="error-message">{errors.email}</div>} {/* نمایش خطا */}
+        {errors.password && <div className="error-message">{errors.password}</div>} {/* نمایش خطا */}
+        {errors.confirmPassword && <div className="error-message">{errors.confirmPassword}</div>} {/* نمایش خطا */}

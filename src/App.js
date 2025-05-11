@@ -1,6 +1,4 @@
-
 import './App.css';
-
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Menu from './Menu';
@@ -8,8 +6,9 @@ import FoodDetails from './FoodDetails';
 import CartPage from './CartPage';
 import Navbar from "./components/Navbar";
 import Contact from './Contact';
-import Register from './Register'
-
+import Register from './Register';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import Auth from './Register';
 
 function App() {
   const [cart, setCart] = useState(() => {
@@ -36,9 +35,6 @@ function App() {
     });
   };
 
-  // حذف آیتم
-
-
   // پاک کردن سبد
   const clearCart = () => {
     setCart([]);
@@ -51,40 +47,42 @@ function App() {
             item.id === id ? { ...item, quantity: Math.max(1, newQuantity) } : item
         )
     );
-};
-const updateMenuItemQuantity = (id, newQuantity) => {
-  setCart(prevCart => {
-    if (newQuantity < 1) {
-      return prevCart.filter(item => item.id !== id);
-    }
-    return prevCart.map(item =>
-      item.id === id ? { ...item, quantity: newQuantity } : item
-    );
-  });
-};
+  };
 
-const removeFromCart = (id) => {
-  setCart(prevCart => prevCart.filter(item => item.id !== id));
-};
+  const updateMenuItemQuantity = (id, newQuantity) => {
+    setCart(prevCart => {
+      if (newQuantity < 1) {
+        return prevCart.filter(item => item.id !== id);
+      }
+      return prevCart.map(item =>
+        item.id === id ? { ...item, quantity: newQuantity } : item
+      );
+    });
+  };
+
+  const removeFromCart = (id) => {
+    setCart(prevCart => prevCart.filter(item => item.id !== id));
+  };
 
   return (
-    <Router>
-      <div className="app-container">
-      <Navbar />
-      <div className="page-content">
-      <Routes>
+    <GoogleOAuthProvider clientId="70832872454-h5avfski2udjovt3vsr4jhoqjuhidpgc.apps.googleusercontent.com" hl="fa"> 
+      <Router>
+        <div className="app-container">
+          <Navbar />
+          <div className="page-content">
+            <Routes>
               <Route path="/" element={<Menu addToCart={addToCart} cart={cart} updateQuantity={updateQuantity} removeFromCart={removeFromCart} updateMenuItemQuantity={updateMenuItemQuantity} />} />
               <Route path="/menu" element={<Menu addToCart={addToCart} cart={cart} updateQuantity={updateQuantity} removeFromCart={removeFromCart} updateMenuItemQuantity={updateMenuItemQuantity} />} />
               <Route path="/food-details/:id" element={<FoodDetails addToCart={addToCart} updateMenuItemQuantity={updateMenuItemQuantity} removeFromCart={removeFromCart} cart={cart} />} />
               <Route path="/cart" element={<CartPage cart={cart} removeFromCart={removeFromCart} clearCart={clearCart} updateQuantity={updateQuantity} updateMenuItemQuantity={updateMenuItemQuantity}/>} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/register" element={<Register />}/>
-      </Routes>
-
-      </div>
-      </div>
-    </Router>
-
+            </Routes>
+          </div>
+        </div>
+      </Router>
+    </GoogleOAuthProvider>
   );
 }
+
 export default App;
