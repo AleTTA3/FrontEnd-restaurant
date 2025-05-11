@@ -10,7 +10,7 @@ function FoodDetails({ addToCart, updateMenuItemQuantity, removeFromCart, cart }
     const [food, setFood] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    // دریافت اطلاعات غذاها از API
+    
     useEffect(() => {
         fetch("http://localhost/restaurant/get_foods.php")
             .then((response) => response.json())

@@ -5,7 +5,7 @@ import { faMinus, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 function CartPage({ cart, removeFromCart, clearCart, updateMenuItemQuantity }) {
     const totalPrice = cart.reduce((sum, item) => {
         const price = parseInt(item.price.replace(/ تومان/g, "").replace(/,/g, ""));
-        return sum + price * item.quantity; // محاسبه درست قیمت کل بر اساس quantity
+        return sum + price * item.quantity; 
     }, 0);
 
     const handleOrder = () => {

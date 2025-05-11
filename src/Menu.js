@@ -27,12 +27,12 @@ function Menu({ addToCart, cart, updateMenuItemQuantity, removeFromCart }) {
 
    
   useEffect(() => {
-    // دریافت اطلاعات غذاها از API
+    
     fetch("http://localhost/restaurant/get_foods.php")
         .then(response => response.json())
         .then(data => {
-            setMenuItems(data); // ذخیره‌ی داده‌ها
-            setFilteredItems(data); // مقداردهی به آیتم‌های فیلتر شده
+            setMenuItems(data); 
+            setFilteredItems(data); 
         })
         .catch(error => console.error("Error fetching menu items:", error));
 }, []);
@@ -79,7 +79,7 @@ function Menu({ addToCart, cart, updateMenuItemQuantity, removeFromCart }) {
 
   return (
       <div className="menu-container">
-          {/* فهرست دسته‌بندی */}
+          {}
           <div className="sidebar">
               <h3>دسته‌بندی‌ها</h3>
               <ul>
