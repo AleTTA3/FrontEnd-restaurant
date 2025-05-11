@@ -145,9 +145,11 @@ function Auth() {
         {formMessage && <div className={`form-message ${formMessage.includes('موفق') ? 'success' : 'error'}`}>{formMessage}</div>}
 
         {/* نمایش ارورها در بالا */}
-        {Object.values(errors).map((msg, index) => (
+        {Object.values(errors)
+          .filter(msg => msg) // فقط اونایی که مقدار واقعی دارن
+          .map((msg, index) => (
           <div className="error-message" key={index}>{msg}</div>
-        ))}
+          ))}
 
         {mode === 'register' && (
           <>
