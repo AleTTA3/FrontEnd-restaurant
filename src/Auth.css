@@ -1,112 +1,124 @@
 .auth-tabs {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.auth-tabs button {
+  font-family: 'IRANYekan';
+  background: transparent;
+  border: none;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: 0.3s ease;
+}
+
+.auth-tabs button.active {
+  border-bottom: 2px solid #ffbc42;
+  font-weight: bold;
+  color: #ffbc42;
+}
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  animation: fadeIn 1s ease-in;
+  flex-direction: column;
+}
+
+.auth-form {
+  background: rgba(255, 255, 255, 0.1); /* شیشه‌ای با شفافیت */
+  border-radius: 20px;
+  backdrop-filter: blur(10px); /* فیلتر بلور برای شیشه‌ای بودن */
+  padding: 40px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation: slideUp 1s ease-out;
+}
+.auth-form input::placeholder {
+  color: rgba(14, 8, 8, 0.288);
+  opacity: 1;   
+}
+.auth-form input {
+  text-align: right;
+  padding: 12px;
+  font-family: 'IRANYekan';
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.2); /* شیشه‌ای با کمی شفافیت */
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.3s ease, border 0.3s ease;
+}
+
+.auth-form input:focus {
+  background-color: rgba(255, 255, 255, 0.3); /* شفاف‌تر در حالت فوکوس */
+}
+
+.auth-button {
+  font-family: 'IRANYekan';
+  background-color: #ffbc42;
+  color: white;
+  font-size: 1.1rem;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.auth-button:hover {
+  background-color: #ff6f61;
+}
+
+.auth-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.error-message {
+  color: #cc0000;
+  background: #ffe6e6;
+  padding: 8px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.input-error {
+  border: 2px solid red !important;
+}
+
+.input-success {
+  border: 2px solid #00c9a7 !important; /* سبز برای بردر موفقیت */
+  box-shadow: 0 0 5px rgba(0, 201, 167, 0.5);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
   }
-  
-  .auth-tabs button {
-    font-family: 'IRANYekan';
-    background: transparent;
-    border: none;
-    padding: 10px 20px;
-    color: #fff;
-    font-size: 1rem;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    transition: 0.3s ease;
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  .auth-tabs button.active {
-    border-bottom: 2px solid #00c9a7;
-    font-weight: bold;
-  }
-  
-  .auth-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #0f2027, #203a42, #2c5364);
-    animation: fadeIn 1s ease-in;
-    flex-direction: column;
-  }
-  
-  .auth-form {
-    
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    padding: 40px;
-    width: 90%;
-    max-width: 400px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    animation: slideUp 1s ease-out;
-  }
-  .error-message {
-    color: red;
-    background: linear-gradient(45deg, #ff6f61, #ffbc42);
-    padding: 8px;
-    border-radius: 6px;
-    margin-bottom: 12px;
-    text-align: center;
-  }
-  
-  .auth-form input {
-    text-align: right;
-    padding: 12px;
-    font-family: 'IRANYekan';
-    border: none;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: white;
-    font-size: 1rem;
-    outline: none;
-    transition: background 0.3s ease;
-  }
-  
-  .auth-form input:focus {
-    background-color: rgba(255, 255, 255, 0.3);
-  }
-  
-  .auth-button {
-    font-family: 'IRANYekan';
-    background-color: #00c9a7;
-    color: white;
-    font-size: 1.1rem;
-    padding: 12px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .auth-button:hover {
-    background-color: #00a389;
-  }
-  
-  .auth-title {
-    text-align: center;
-    font-size: 2rem;
-    color: #fff;
-    margin-bottom: 20px;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
-  
-  @keyframes slideUp {
-    from {
-      transform: translateY(30px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  
+}
