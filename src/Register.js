@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Auth.css';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
@@ -10,6 +10,15 @@ function Auth() {
   });
   const [errors, setErrors] = useState({});
   const [formMessage, setFormMessage] = useState('');
+
+  // بررسی لاگین بودن کاربر در بارگذاری اولیه
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const phoneoremail = JSON.parse(localStorage.getItem('email'))
+    if (user) {
+      window.location.href = '/'; // انتقال به صفحه اصلی یا هر صفحه دلخواه
+    }
+  }, []);
 
   const validateEmail = (email) => /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email);
   const validatePhone = (phone) => /^09\d{9}$/.test(phone);
@@ -96,6 +105,12 @@ function Auth() {
         if (data.success) {
           setFormMessage(' عملیات با موفقیت انجام شد');
           setErrors({});
+
+          if (mode === 'login') {
+            localStorage.setItem("user", JSON.stringify(data.user));
+            localStorage.setItem("phoneoremail",JSON.stringify(data.email));
+            window.location.href = "/";
+          }
         } else {
           setFormMessage(` ${data.message}`);
         }
@@ -110,7 +125,6 @@ function Auth() {
   };
 
   return (
-  
     <div className="auth-container">
       <style>
         {`
@@ -129,13 +143,11 @@ function Auth() {
         <h2 className="auth-title">{mode === 'register' ? 'ثبت‌نام' : 'ورود به حساب'}</h2>
 
         {formMessage && <div className={`form-message ${formMessage.includes('موفق') ? 'success' : 'error'}`}>{formMessage}</div>}
-        
-{errors.name && <div className="error-message">{errors.name}</div>} 
-        {errors.phone && <div className="error-message">{errors.phone}</div>} 
-        {errors.address && <div className="error-message">{errors.address}</div>} 
-        {errors.email && <div className="error-message">{errors.email}</div>} 
-        {errors.password && <div className="error-message">{errors.password}</div>} 
-        {errors.confirmPassword && <div className="error-message">{errors.confirmPassword}</div>} 
+
+        {/* نمایش ارورها در بالا */}
+        {Object.values(errors).map((msg, index) => (
+          <div className="error-message" key={index}>{msg}</div>
+        ))}
 
         {mode === 'register' && (
           <>
@@ -160,8 +172,13 @@ function Auth() {
               onSuccess={(credentialResponse) => {
                 try {
                   const decoded = jwtDecode(credentialResponse.credential);
-                  console.log('اطلاعات گوگل:', decoded);
+                  localStorage.setItem("user", JSON.stringify({
+                    name: decoded.name,
+                    email: decoded.email,
+                    picture: decoded.picture
+                  }));
                   setFormMessage(`ورود موفق: ${decoded.name}`);
+                  window.location.href = "/";
                 } catch (err) {
                   console.error('خطا در رمزگشایی:', err);
                   setFormMessage('ورود با گوگل ناموفق بود');
@@ -179,5 +196,3 @@ function Auth() {
 }
 
 export default Auth;
-
-
