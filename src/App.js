@@ -9,6 +9,7 @@ import Contact from './Contact';
 import Register from './Register';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import Auth from './Register';
+import UserOrders from './UserOrders';
 
 function App() {
   const [cart, setCart] = useState(() => {
@@ -77,6 +78,7 @@ function App() {
               <Route path="/cart" element={<CartPage cart={cart} removeFromCart={removeFromCart} clearCart={clearCart} updateQuantity={updateQuantity} updateMenuItemQuantity={updateMenuItemQuantity}/>} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/register" element={<Register />}/>
+              <Route path="/my-orders" element={<UserOrders />} />
             </Routes>
           </div>
         </div>

@@ -108,9 +108,17 @@ function Auth() {
 
           if (mode === 'login') {
             localStorage.setItem("user", JSON.stringify(data.user));
-            localStorage.setItem("phoneoremail",JSON.stringify(data.email));
+            
+            if (data.user?.email) {
+              localStorage.setItem("phoneoremail", data.user.email);
+            } else if (data.user?.phone) {
+              localStorage.setItem("phoneoremail", data.user.phone);
+            }
+          
             window.location.href = "/";
           }
+          
+          
         } else {
           setFormMessage(` ${data.message}`);
         }
@@ -129,7 +137,7 @@ function Auth() {
       <style>
         {`
         .page-content {
-            margin: 0;
+            margin: 5rem 0 0 0;
             padding: 0; 
             flex-grow: 1;
         }   
