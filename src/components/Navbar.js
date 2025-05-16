@@ -10,8 +10,9 @@ function Navbar(){
     const user = JSON.parse(localStorage.getItem("user"));
     const email = localStorage.getItem('phoneoremail');
     const handleLogout = () => {
-  localStorage.removeItem("user");
-  window.location.href = "/"; 
+    localStorage.removeItem('userId')
+    localStorage.removeItem("user");
+    window.location.href = "/"; 
 };
     return(
         <nav className="navbar">

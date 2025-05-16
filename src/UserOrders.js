@@ -1,30 +1,29 @@
 import React, { useEffect, useState } from 'react';
-
+import './UserOrders.css'; // اطمینان حاصل کنید که فایل CSS را ایجاد کرده‌اید
+import moment from 'moment-jalaali';
 function UserOrders() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  function toPersianDigits(str) {
+  return str.replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+}
+  const userId = localStorage.getItem('userId');
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (!storedUser) {
+    if (!userId) {
       setError('لطفاً ابتدا وارد حساب کاربری شوید.');
       setLoading(false);
       return;
     }
 
-    let userId;
-    try {
-      const user = JSON.parse(storedUser);
-      userId = user.id;
-    } catch (e) {
-      setError('اطلاعات کاربر نامعتبر است.');
-      setLoading(false);
-      return;
-    }
-
     fetch(`http://localhost/restaurant/get_user_orders.php?userId=${userId}`)
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('خطا در دریافت سفارش‌ها از سرور');
+        }
+        return res.json();
+      })
       .then(data => {
         if (data.success) {
           setOrders(data.orders);
@@ -37,28 +36,39 @@ function UserOrders() {
         setError('ارتباط با سرور برقرار نشد.');
         setLoading(false);
       });
-  }, []);
+  }, [userId]);
 
   if (loading) return <p>در حال بارگذاری سفارش‌ها...</p>;
   if (error) return <p style={{ color: 'red' }}>{error}</p>;
-
   return (
     <div className="orders-container">
       <h2>سفارش‌های من</h2>
       {orders.length === 0 ? (
         <p>سفارشی ثبت نشده است.</p>
       ) : (
-        <ul>
-          {orders.map((order, index) => (
-            <li key={index}>
-              <p><strong>کد سفارش:</strong> {order.id}</p>
-              <p><strong>تاریخ:</strong> {order.created_at || order.date}</p>
-              <p><strong>وضعیت:</strong> {order.status || 'نامشخص'}</p>
-              <p><strong>جمع کل:</strong> {order.total_price} تومان</p>
-              <hr />
-            </li>
-          ))}
-        </ul>
+        orders.map((order, index) => (
+          <div className="order-card" key={index}>
+            <div className="order-header">
+              <span>کد سفارش: {order.id}</span>
+              <span><strong>تاریخ:</strong> {toPersianDigits(moment(order.created_at).format('jYYYY/jMM/jDD HH:mm'))}</span>
+              <span>وضعیت: {order.status}</span>
+            </div>
+            <div className="order-items">
+              <ul>
+                {order.items.map((item, idx) => (
+                  <li key={idx}>
+                    {item.food_name} × {parseInt(item.quantity.toString().replace(/[^0-9]/g, "")).toLocaleString("fa-IR")} = {parseInt(item.price * item.quantity.toString().replace(/[^0-9]/g, "")).toLocaleString("fa-IR")} تومان
+                    
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="order-total">
+              جمع کل: {parseInt(order.total_price.toString().replace(/[^0-9]/g, "")).toLocaleString("fa-IR")} تومان
+              
+            </div>
+          </div>
+        ))
       )}
     </div>
   );

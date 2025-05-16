@@ -344,6 +344,7 @@ src: url('assets/fonts/IRANYekan.woff2') format('woff2'),
   transition: transform 0.5s;
 }
 .menu-card:hover .food-image {
+  
   transform: scale(1.05);
 }
 .popular-badge {

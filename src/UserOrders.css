@@ -1,0 +1,57 @@
+.orders-container {
+    text-align: center;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    background: white;
+    box-shadow: var(--box-shadow);
+    max-width: 800px;
+  
+}
+
+.order-card {
+    display: flexbox;
+    background: var(--bg-light);
+    justify-content: space-between;
+    align-items: center;
+    border-radius: var(--border-radius);
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    font-family: 'IRANYekan';
+    src: url('assets/fonts/IRANYekan.woff2') format('woff2'),
+       url('assets/fonts/IRANYekan.woff2') format('woff');
+    border: 1px solid #ddd;
+
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.order-header {
+    
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.order-items ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.order-items li {
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.order-total {
+    
+  text-align: right;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #ff6600;
+}

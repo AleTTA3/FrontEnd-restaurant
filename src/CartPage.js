@@ -10,43 +10,50 @@ function CartPage({ cart, removeFromCart, clearCart, updateMenuItemQuantity }) {
     }, 0);
 
     const handleOrder = async () => {
-        if (cart.length === 0) {
-            alert("سبد خرید شما خالی است");
-            return;
-        }
-    
-        const orderData = {
-            userId: 1, // شناسه کاربر واقعی رو اینجا قرار بده
-            total_price: totalPrice,
-            items: cart.map(item => ({
-                food_id: item.id,
-                quantity: item.quantity,
-                price: parseInt(item.price.replace(/ تومان/g, "").replace(/,/g, ""))
-            }))
-        };
-    
-        try {
-            const response = await fetch('http://localhost/restaurant/cart.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(orderData)
-            });
-    
-            const data = await response.json();
-            if (data.success) {
-                alert("سفارش با موفقیت ثبت شد.");
-                clearCart(); // پاک کردن سبد پس از سفارش موفق
-            } else {
-                console.error('Failed to place order');
-                alert("خطا در ثبت سفارش");
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert("خطای شبکه در ثبت سفارش");
-        }
+    if (cart.length === 0) {
+        alert("سبد خرید شما خالی است");
+        return;
+    }
+
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
+        alert("ابتدا وارد حساب کاربری شوید");
+        return;
+    }
+
+    const orderData = {
+        userId: parseInt(userId),  // 👈 بسیار مهم: عددی باشه
+        total_price: totalPrice,
+        items: cart.map(item => ({
+            food_id: item.id,
+            quantity: item.quantity,
+            price: parseInt(item.price.replace(/ تومان/g, "").replace(/,/g, ""))
+        }))
     };
+
+    try {
+        const response = await fetch('http://localhost/restaurant/cart.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(orderData)
+        });
+
+        const data = await response.json();
+        if (data.success) {
+            alert("سفارش با موفقیت ثبت شد.");
+            clearCart();
+        } else {
+            console.error('Failed to place order');
+            alert("خطا در ثبت سفارش");
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert("خطای شبکه در ثبت سفارش");
+    }
+};
+
     
 
     return (

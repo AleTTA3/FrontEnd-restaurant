@@ -103,12 +103,12 @@ function Auth() {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
+          localStorage.setItem("userId", data.user.id);
           setFormMessage(' عملیات با موفقیت انجام شد');
           setErrors({});
 
           if (mode === 'login') {
             localStorage.setItem("user", JSON.stringify(data.user));
-            
             if (data.user?.email) {
               localStorage.setItem("phoneoremail", data.user.email);
             } else if (data.user?.phone) {
