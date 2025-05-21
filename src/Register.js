@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Auth.css';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
-
+import db from './db';
 function Auth() {
   const [mode, setMode] = useState('register');
   const [formData, setFormData] = useState({
@@ -79,8 +79,8 @@ function Auth() {
     if (!validateForm()) return;
 
     const url = mode === 'register'
-      ? 'http://localhost/restaurant/register.php'
-      : 'http://localhost/restaurant/login.php';
+      ? db.backend_location+'register.php'
+      : db.backend_location+'login.php';
 
     const payload = mode === 'register'
       ? {

@@ -5,6 +5,7 @@ import * as framer from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDownWideShort } from "@fortawesome/free-solid-svg-icons";
 import { faMinus, faPlus, faTrash , faSearch } from "@fortawesome/free-solid-svg-icons";
+import db from './db';
 const motion = framer.motion;
 
 const categories = [
@@ -28,7 +29,7 @@ function Menu({ addToCart, cart, updateMenuItemQuantity, removeFromCart }) {
    
   useEffect(() => {
     
-    fetch("http://localhost/restaurant/get_foods.php")
+    fetch(db.backend_location+"get_foods.php")
         .then(response => response.json())
         .then(data => {
             setMenuItems(data); 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './UserOrders.css'; // اطمینان حاصل کنید که فایل CSS را ایجاد کرده‌اید
 import moment from 'moment-jalaali';
+import db from './db';
 function UserOrders() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -9,15 +10,14 @@ function UserOrders() {
   return str.replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
 }
   const userId = localStorage.getItem('userId');
-
   useEffect(() => {
     if (!userId) {
-      setError('لطفاً ابتدا وارد حساب کاربری شوید.');
+      setError('لطفاً ابتدا وارد حساب کاربری شوید');
       setLoading(false);
-      return;
     }
 
-    fetch(`http://localhost/restaurant/get_user_orders.php?userId=${userId}`)
+    fetch(db.backend_location+`get_user_orders.php?userId=${userId}`)
+    
       .then(res => {
         if (!res.ok) {
           throw new Error('خطا در دریافت سفارش‌ها از سرور');
@@ -39,7 +39,7 @@ function UserOrders() {
   }, [userId]);
 
   if (loading) return <p>در حال بارگذاری سفارش‌ها...</p>;
-  if (error) return <p style={{ color: 'red' }}>{error}</p>;
+  if (error) return <p style={{ color: 'red' }}><div className="orders-container"> <h2>{error}</h2></div> </p>;
   return (
     <div className="orders-container">
       <h2>سفارش‌های من</h2>

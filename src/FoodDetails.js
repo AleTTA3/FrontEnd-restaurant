@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
-
+import db from './db';
 function FoodDetails({ addToCart, updateMenuItemQuantity, removeFromCart, cart }) {
     const { id } = useParams();
     const [food, setFood] = useState(null);
@@ -12,7 +12,7 @@ function FoodDetails({ addToCart, updateMenuItemQuantity, removeFromCart, cart }
 
     
     useEffect(() => {
-        fetch("http://localhost/restaurant/get_foods.php")
+        fetch(db.backend_location+"get_foods.php")
             .then((response) => response.json())
             .then((data) => {
                 setFood(data.find(item => Number(item.id) === Number(id)));

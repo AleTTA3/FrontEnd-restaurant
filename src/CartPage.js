@@ -2,7 +2,7 @@ import React from "react";
 import "./Cart.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
-
+import db from './db';
 function CartPage({ cart, removeFromCart, clearCart, updateMenuItemQuantity }) {
     const totalPrice = cart.reduce((sum, item) => {
         const price = parseInt(item.price.replace(/ تومان/g, "").replace(/,/g, ""));
@@ -32,7 +32,7 @@ function CartPage({ cart, removeFromCart, clearCart, updateMenuItemQuantity }) {
     };
 
     try {
-        const response = await fetch('http://localhost/restaurant/cart.php', {
+        const response = await fetch(db.backend_location+'cart.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
