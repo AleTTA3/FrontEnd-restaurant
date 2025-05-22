@@ -5,7 +5,7 @@ import * as framer from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDownWideShort } from "@fortawesome/free-solid-svg-icons";
 import { faMinus, faPlus, faTrash , faSearch } from "@fortawesome/free-solid-svg-icons";
-import db from './db';
+import db from "./db";
 const motion = framer.motion;
 
 const categories = [
@@ -24,7 +24,6 @@ function Menu({ addToCart, cart, updateMenuItemQuantity, removeFromCart }) {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const toggleSearchBox = () => setIsSearchOpen(!isSearchOpen);
     const [searchText, setSearchText] = useState("");
-
 
    
   useEffect(() => {

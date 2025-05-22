@@ -88,3 +88,48 @@
 .add-to-cart:hover {
     background-color: #21867a;
 }
+.comments-section {
+  margin-top: 40px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid #e0e0e0;
+}
+
+.comment-form textarea.comment-textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.comment-box {
+  background-color: white;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+}
+
+.comment-box strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.comment-box small {
+  display: block;
+  margin-top: 6px;
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.no-comments {
+  color: #666;
+  margin-top: 10px;
+}
