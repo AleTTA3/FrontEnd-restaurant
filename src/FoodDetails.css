@@ -1,16 +1,20 @@
-.food-details {
-    background: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 10px;
+.food-details-container {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  direction: rtl;
+}
+
+.food-left,
+.food-right {
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .food-image {
@@ -51,18 +55,23 @@
 }
 
 .quantity-control button {
-    background: var(--primary-color);
-    border: none;
-    padding: 10px 15px;
-    font-size: 18px;
+    border:1px solid #ff5722;
+    transition: all 0.3s ease;
+    color: #ff7f50;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
     cursor: pointer;
-    border-radius: 5px;
-    color: white;
-    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
 }
 
 .quantity-control button:hover {
-    background-color: #e76f51;
+    background: linear-gradient(45deg, #ff6f61, #ffbc42); 
+transform: scale(1.1);
+color: white;
 }
 
 .quantity-control span {
@@ -71,22 +80,36 @@
     font-weight: bold;
 }
 
-.add-to-cart {
-    background-color: #2a9d8f;
-    width: 100%;
-    background: var(--secondary-color);
+.add-button  {
+    background: linear-gradient(45deg, #ff6f61, #ffbc42);
+    
     color: white;
     border: none;
     padding: 12px 20px;
-    font-size: 18px;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 15px;
     transition: 0.3s;
 }
-
-.add-to-cart:hover {
-    background-color: #21867a;
+.add-button {
+ 
+}
+.add-button:after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(45deg);
+  transition: all 0.3s;
+}
+.add-button:hover:after {
+  left: 100%;
+}
+.add-button:hover {
+  background: linear-gradient(45deg, #ff6f61, #ffbc42); 
 }
 .comments-section {
   margin-top: 40px;
@@ -97,7 +120,7 @@
 }
 
 .comment-form textarea.comment-textarea {
-  width: 100%;
+  width: 95%;
   min-height: 80px;
   padding: 12px;
   border-radius: 8px;
@@ -127,6 +150,7 @@
   margin-top: 6px;
   color: #888;
   font-size: 0.8rem;
+   ;
 }
 
 .no-comments {
